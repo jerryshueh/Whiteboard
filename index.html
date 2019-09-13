@@ -47,7 +47,7 @@
                     });
                     alert('Your Document is Saved');
                     break;
-                case 'command+s':
+                case '^+s':
                     fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
                         if (err) {
                             console.log(err);
