@@ -22,12 +22,12 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             fs.readFile('/note', 'utf8', function (err, data) {
                 if (data == null || err != null) data = "Welcome to my Whiteboard :)";
-                document.querySelector('#notepad').innerHTML = data;
+                document.querySelector('.notepad').innerHTML = data;
             });
         });
         var interV = window.setInterval(saveWhiteboard, 5000);
         var saveWhiteboard = function () {
-            fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
+            fs.writeFile('/note', document.querySelector('.notepad').innerHTML, function (err) {
                 if (err) {
                     console.log(err);
                     throw err;
@@ -38,7 +38,7 @@
         hotkeys('ctrl+s, ^+s', function (event, handler) {
             switch (handler.key) {
                 case 'ctrl+s':
-                    fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
+                    fs.writeFile('/note', document.querySelector('.notepad').innerHTML, function (err) {
                         if (err) {
                             console.log(err);
                             throw err;
