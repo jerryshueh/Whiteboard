@@ -16,24 +16,49 @@
         </div>
     </div>
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
     <script>
         const fs = new Filer.FileSystem();
         document.addEventListener('DOMContentLoaded', (event) => {
             fs.readFile('/note', 'utf8', function (err, data) {
-                if (data == null || err != null) data ="Welcome to my Whiteboard :)";
+                if (data == null || err != null) data = "Welcome to my Whiteboard :)";
                 document.querySelector('#notepad').innerHTML = data;
             });
         });
-        var interV = window.setInterval(saveWhiteboard,5000);
-        var saveWhiteboard = function (){
-            fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err){
-                if (err){
+        var interV = window.setInterval(saveWhiteboard, 5000);
+        var saveWhiteboard = function () {
+            fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
+                if (err) {
                     console.log(err);
                     throw err;
-                    
+
                 }
             });
         };
+        hotkeys('ctrl+s, command+s', function (event, handler) {
+            switch (handler.key) {
+                case 'ctrl+s':
+                    fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
+                        if (err) {
+                            console.log(err);
+                            throw err;
+
+                        }
+                    });
+                    alert('Your Document is Saved');
+                    break;
+                case 'command+s':
+                    fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err) {
+                        if (err) {
+                            console.log(err);
+                            throw err;
+
+                        }
+                    });
+                    alert('Your Document is Saved');
+                    break;
+            }
+        })
     </script>
 </body>
 
