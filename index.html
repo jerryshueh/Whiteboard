@@ -1,12 +1,40 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>My Web Page</title>
-    </head>
 
-    <body>
-        <!-- This is a comment -->
-        <h1>This is a Simple Note-Taking application</h1>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>My Whiteboard</title>
+</head>
+
+<body>
+    <!-- This is a comment -->
+    <h1>Whiteboard Application</h1>
+    <div class="whiteboard">
+        <div class="whitebody">
+            <h3 class="title">Enter your idea below</h3>
+            <div class="notepad" contenteditable="true"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+    <script>
+        const fs = new Filer.FileSystem();
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fs.readFile('/note', 'utf8', function (err, data) {
+                if (data == null || err != null) data ="Welcome to my Whiteboard :)";
+                document.querySelector('#notepad').innerHTML = data;
+            });
+        });
+        var interV = window.setInterval(saveWhiteboard,5000);
+        var saveWhiteboard = function (){
+            fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function (err){
+                if (err){
+                    console.log(err);
+                    throw err;
+                    
+                }
+            })
+        }
+    </script>
+</body>
+
 </html>
