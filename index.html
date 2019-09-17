@@ -40,7 +40,8 @@
             return !(tagName.isContentEditable || tagName == 'INPUT' || tagName == 'SELECT' || tagName == 'TEXTAREA');
         }
         hotkeys('control+s', function (event, handler) {
-            if (event.target === "input") {
+            console.log(handler.key);
+            if (handler.key == "control+s") {
                 fs.writeFile('/note', document.querySelector('div.notepad').innerHTML, function (err) {
                     if (err) {
                         console.log(err);
