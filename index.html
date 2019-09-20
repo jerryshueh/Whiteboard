@@ -4,20 +4,21 @@
 <head>
     <meta charset="utf-8">
     <title>My Whiteboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
+    <link rel="stylesheet" href="./assets/styles/note.css">
 </head>
 
-<body style="margin-left: 10%; margin-right: 10%;">
+<body>
     <!-- This is a comment -->
     <h1>Whiteboard Application</h1>
     <div class="whiteboard">
-            <div class="card" style="width: 85%;">
         <div class="whitebody">
             <h3 class="title">Enter your idea below</h3>
-            <div class="notepad" style="background-color:blanchedalmond; box-shadow: blue" contenteditable="true"></div>
+            <div class="card notepad" contenteditable="true"></div>
+            <br>
+            <sub>* Press ctrl/cmd + S to save!</sub>
         </div>
     </div>
-    </div>
-    <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
     <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
     <script>

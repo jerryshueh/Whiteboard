@@ -1,0 +1,15 @@
+body {
+    margin-left: 10%; 
+    margin-right: 10%;
+}
+
+.whiteboard {
+    width: 85%;
+}
+
+.notepad {
+    border: 1px solid gold;
+    padding: 1em;
+    background-color:blanchedalmond; 
+    box-shadow: blue;
+}
